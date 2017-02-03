@@ -1,0 +1,14 @@
+version: '2'
+services:
+  grafana:
+    image: grafana/grafana:${GRAFANA_TAG}
+    container_name: grafana
+    hostname: grafana-${HOST_HOSTNAME}
+    volumes:
+      - ${DATA}/grafana/sqlite:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    env_file:
+      - grafana.env
+    ports:
+      - "3000:3000"

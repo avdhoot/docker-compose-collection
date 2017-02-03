@@ -1,0 +1,22 @@
+version: '2'
+services:
+  influxdb:
+    image: influxdb:${INFLUXTAG}
+    container_name: influxdb
+    hostname: influxdb-${HOST_HOSTNAME}
+    volumes:
+      - ${DATA}/influxdb/data/:/var/lib/influxdb
+      - ${DATA}/influxdb/etc/:/etc/influxdb
+    environment:
+      - INFLUXDB_META_DIR=/var/lib/influxdb/meta
+      - INFLUXDB_DATA_DIR=/var/lib/influxdb/data
+      - INFLUXDB_DATA_WAL_DIR=/var/lib/influxdb/wal 
+    env_file:
+      - influxdb.env
+    ports:
+      - "8086:8086"
+    ulimits:
+      nofile:
+        soft: 64000
+        hard: 64000
+
