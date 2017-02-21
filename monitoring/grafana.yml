@@ -6,8 +6,6 @@ services:
     hostname: grafana-${HOST_HOSTNAME}
     volumes:
       - ${DATA}/grafana/sqlite:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
     env_file:
       - grafana.env
     ports:

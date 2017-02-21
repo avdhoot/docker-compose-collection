@@ -5,12 +5,8 @@ services:
     container_name: kapacitor
     hostname: kapacitor-${HOST_HOSTNAME}
     volumes:
-     - ${DATA}/kapacitor/data/:/var/lib/kapacitor/data
+     - ${DATA}/kapacitor/data/:/var/lib/kapacitor/
      - ${DATA}/kapacitor/etc/:/etc/kapacitor
-    environment:
-     - KAPACITOR_HTTP_BIND_ADDRESS=:9092
-     - KAPACITOR_LOGGING_LEVEL=DEBUG
-     - KAPACITOR_INFLUXDB_0_ENABLED=false
     env_file:
       - kapacitor.env
     ports:
