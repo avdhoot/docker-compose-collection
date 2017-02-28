@@ -10,7 +10,7 @@ services:
     env_file:
       - influxdb.env
     ports:
-      - "8086:443"
+      - "443:8086"
     ulimits:
       nofile:
         soft: 64000

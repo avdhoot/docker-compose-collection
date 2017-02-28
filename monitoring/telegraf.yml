@@ -1,0 +1,16 @@
+version: '2'
+services:
+  telegraf:
+    image: telegraf:${INFLUXTAG}
+    container_name: telegraf
+    hostname: telegraf-${HOST_HOSTNAME}
+    volumes:
+      - ${DATA}/telegraf/data/:/var/lib/telegraf
+      - ${DATA}/telegraf/etc/:/etc/telegraf
+    env_file:
+      - telegraf.env
+    ulimits:
+      nofile:
+        soft: 64000
+        hard: 64000
+
