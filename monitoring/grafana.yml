@@ -8,5 +8,8 @@ services:
       - ${DATA}/grafana/sqlite:/var/lib/grafana
     env_file:
       - grafana.env
+    environment:
+      GF_SERVER_ROOT_URL: http://${HOST_HOSTNAME}:3000
+      GF_SERVER_DOMAIN: ${HOST_HOSTNAME}
     ports:
       - "3000:3000"
